@@ -157,30 +157,30 @@ class TestPage5(PageView):
 
 xadmin.site.register_page(TestPage5)
 
-class TestPage41(PageView):
+class TestPage51(PageView):
     verbose_name = u'数据篡改(Schneider)'
     app_label = 'app'
     menu_group = 'test_group'
     icon = "fa fa-circle"
-    template = 'zhuschne.html'
+    template = 'shuschne.html'
 
     def get_content(self):
         return 'OK'
-xadmin.site.register_page(TestPage41)
+xadmin.site.register_page(TestPage51)
 
-class TestPage41(PageView):
+class TestPage52(PageView):
     verbose_name = u'数据篡改(Siemens)'
     app_label = 'app'
     menu_group = 'test_group'
     icon = "fa fa-circle"
-    template = 'zhuschne.html'
+    template = 'shusiem.html'
 
     def get_content(self):
         return 'OK'
-xadmin.site.register_page(TestPage41)
+xadmin.site.register_page(TestPage52)
 
 
-class TestPage43(PageView):
+class TestPage53(PageView):
     verbose_name = u'数据篡改(RTU)'
     app_label = 'app'
     menu_group = 'test_group'
@@ -189,7 +189,7 @@ class TestPage43(PageView):
 
     def get_content(self):
         return 'OK'
-xadmin.site.register_page(TestPage43)
+xadmin.site.register_page(TestPage53)
 
 
 
