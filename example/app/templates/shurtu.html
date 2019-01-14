@@ -8,7 +8,9 @@
         <div class="breadcrumb">
             <div class="row">
                 <div class="col-xs-10">
+                    <a href="#">
                         <button type="button" class="btn btn-success my-wrong" >（启动）Start</button>
+                    </a>
                 </div>
                 <div class="col-xs-2">
                     <button type="button" class="btn btn-danger" id="but2">（恢复）Reset</button>
@@ -20,19 +22,19 @@
         <div class="col-xs-4">
             <div class="newspaper">
                 <button type="button" class="btn btn-success">启动</button>
-                <p3>指令注入(Schneider):</p3>
-                <h4>发送恶意指令，修改PLC状态。</h4>
+                <p3>数据篡改2(RTU):</p3>
+                <h4>篡改数据</h4>
             </div>
         </div>
-    </div>
-<script src="{% static 'assets/js/jquery-1.10.2.js' %}"></script>
+
+    <script src="{% static 'assets/js/jquery-1.10.2.js' %}"></script>
          <script type="text/javascript">
        $(document).ready(function() {
            $(".my-wrong").on("click",function () {
 
                alert('启动成功')
                var array=[{
-                   name:'Arp欺骗(Schneider)'},
+                   name:'数据篡改(Schneider)'},
                    {start:1}];
                $.post( {url:"/xadmin/page/TestPage2",
 
@@ -48,11 +50,11 @@
                          alert("启动失败")}
                })
            });
+           $("#but2").on("click",function () {
+               alert("恢复成功")
 
-            $("#but2").on("click",function () {
-               alert('恢复成功')
            })
        })
     </script>
-
+  </div>
 {% endblock %}

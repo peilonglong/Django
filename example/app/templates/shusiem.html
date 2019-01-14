@@ -13,7 +13,7 @@
                     </a>
                 </div>
                 <div class="col-xs-2">
-                    <button type="button" class="btn btn-danger" >（恢复）Reset</button>
+                    <button type="button" class="btn btn-danger" id="but2">（恢复）Reset</button>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
             <div class="newspaper">
                 <button type="button" class="btn btn-success">启动</button>
                 <p3>数据篡改(Siemens):</p3>
-                <h4>发送恶意指令，修改PLC状态。</h4>
+                <h4>篡改西门子开关量和模拟量。</h4>
             </div>
         </div>
 
@@ -50,6 +50,11 @@
                          alert("启动失败")}
                })
            });
+
+           $("#but2").on("click",function () {
+               alert("恢复成功")
+
+           })
        })
     </script>
   </div>

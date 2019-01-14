@@ -6,21 +6,21 @@ from . import funtion as post
 import xadmin
 from xadmin.views.page import PageView
 
-class TestPage(PageView):
-    '''
-    带ajax页链接
-    '''
-    verbose_name = u'ARP欺骗'
-    app_label = 'app'
-    menu_group = 'test_group'
-    template = 'arp.html'
+# class TestPage(PageView):
+#     '''
+#     带ajax页链接
+#     '''
+#     verbose_name = u'ARP欺骗'
+#     app_label = 'app'
+#     menu_group = 'arp_group'
+#     template = 'arp.html'
     # def get_media(self):
     #     media = self.vendor('xadmin.plugin.quick-form.js', 'xadmin.form.css')
     #     return media
     #
     # def get_content(self):
     #     return mark_safe('<a data-refresh-url="/xadmin/page/testpage2/" href="/xadmin/page/formpage1" class="ajaxform-handler" title="测试AjaxForm">GO</a>')
-xadmin.site.register_page(TestPage)
+# xadmin.site.register_page(TestPage)
 
 class TestPage1(PageView):
     '''
@@ -28,7 +28,7 @@ class TestPage1(PageView):
     '''
     verbose_name = u'ARP欺骗(Schneider)'
     app_label = 'app'
-    menu_group = 'test_group'
+    menu_group = 'arp_group'
     icon = "fa fa-circle"
     template = 'arpschne.html'
 
@@ -41,7 +41,7 @@ xadmin.site.register_page(TestPage1)
 class TestPage2(PageView):
     verbose_name = u'ARP欺骗(Siemens)'
     app_label = 'app'
-    menu_group = 'test_group'
+    menu_group = 'arp_group'
     icon = "fa fa-circle"
     template = 'arpsiem.html'
 
@@ -50,7 +50,7 @@ xadmin.site.register_page(TestPage2)
 class TestPage3(PageView):
     verbose_name = u'ARP欺骗(RTU)'
     app_label = 'app'
-    menu_group = 'test_group'
+    menu_group = 'arp_group'
     icon = "fa fa-circle"
     template = 'arprut.html'
 
@@ -58,132 +58,67 @@ class TestPage3(PageView):
         return 'OK'
 xadmin.site.register_page(TestPage3)
 
-class TestPage3(PageView):
-    '''
-    bootstrap常用html
-    '''
-    verbose_name = u'DOS攻击'
-    app_label = 'app'
-    menu_group = 'test_group'
-    template = 'dos.html'
-
-xadmin.site.register_page(TestPage3)
-
-class TestPage31(PageView):
-    verbose_name = u'DOS攻击(Schneider)'
-    app_label = 'app'
-    menu_group = 'test_group'
-    icon = "fa fa-circle"
-    template = 'dosschne.html'
-
-    def get_content(self):
-        return 'OK'
-xadmin.site.register_page(TestPage31)
-
-class TestPage32(PageView):
-    verbose_name = u'DOS攻击(Siemens)'
-    app_label = 'app'
-    menu_group = 'test_group'
-    icon = "fa fa-circle"
-    template = 'dossiem.html'
-
-    def get_content(self):
-        return 'OK'
-xadmin.site.register_page(TestPage32)
-
-class TestPage33(PageView):
-    verbose_name = u'DOS攻击(RTU)'
-    app_label = 'app'
-    menu_group = 'test_group'
-    icon = "fa fa-circle"
-    template = 'dosrut.html'
-
-    def get_content(self):
-        return 'OK'
-xadmin.site.register_page(TestPage33)
-
-
-class TestPage4(PageView):
-    '''
-    bootstrap常用html
-    '''
-    verbose_name = u'指令注入'
-    app_label = 'app'
-    menu_group = 'test_group'
-    template = 'zhu.html'
-
-xadmin.site.register_page(TestPage4)
-
 
 class TestPage41(PageView):
-    verbose_name = u'指令注入(Schneider)'
+    verbose_name = u'DOS攻击(Schneider)'
     app_label = 'app'
-    menu_group = 'test_group'
+    menu_group = 'dos_group'
     icon = "fa fa-circle"
-    template = 'zhuschne.html'
+    template = 'dosschne.html'
 
     def get_content(self):
         return 'OK'
 xadmin.site.register_page(TestPage41)
 
 class TestPage42(PageView):
-    verbose_name = u'指令注入(Siemens)'
+    verbose_name = u'DOS攻击(Siemens)'
     app_label = 'app'
-    menu_group = 'test_group'
+    menu_group = 'dos_group'
     icon = "fa fa-circle"
-    template = 'zhusiem.html'
+    template = 'dossiem.html'
 
     def get_content(self):
         return 'OK'
 xadmin.site.register_page(TestPage42)
 
+
 class TestPage43(PageView):
-    verbose_name = u'指令注入(RTU)'
+    verbose_name = u'DOS攻击(RTU)'
     app_label = 'app'
-    menu_group = 'test_group'
+    menu_group = 'dos_group'
     icon = "fa fa-circle"
-    template = 'zhurut.html'
+    template = 'dosrut.html'
 
     def get_content(self):
         return 'OK'
 xadmin.site.register_page(TestPage43)
 
-class TestPage5(PageView):
-
-    verbose_name = u'数据篡改'
-    app_label = 'app'
-    menu_group = 'test_group'
-    template = 'bootstrap.html'
-
-xadmin.site.register_page(TestPage5)
-
 class TestPage51(PageView):
-    verbose_name = u'数据篡改(Schneider)'
+    verbose_name = u'指令注入(Schneider)'
     app_label = 'app'
-    menu_group = 'test_group'
+    menu_group = 'zhu_group'
     icon = "fa fa-circle"
-    template = 'shuschne.html'
+    template = 'zhuschne.html'
 
     def get_content(self):
         return 'OK'
 xadmin.site.register_page(TestPage51)
 
 class TestPage52(PageView):
-    verbose_name = u'数据篡改(Siemens)'
+    verbose_name = u'指令注入(Siemens)'
     app_label = 'app'
-    menu_group = 'test_group'
+    menu_group = 'zhu_group'
     icon = "fa fa-circle"
-    template = 'shusiem.html'
+    template = 'zhusiem.html'
 
     def get_content(self):
         return 'OK'
 xadmin.site.register_page(TestPage52)
 
-
 class TestPage53(PageView):
-    verbose_name = u'数据篡改(RTU)'
+    verbose_name = u'指令注入(RTU)'
     app_label = 'app'
-    menu_group = 'test_group'
+    menu_group = 'zhu_group'
     icon = "fa fa-circle"
     template = 'zhurut.html'
 
@@ -193,56 +128,78 @@ xadmin.site.register_page(TestPage53)
 
 
 
-
-
-
-class TestPage6(PageView):
-    '''
-    bootstrap常用html
-    '''
-    verbose_name = u'非法攻击'
+class TestPage61(PageView):
+    verbose_name = u'数据篡改(Schneider)'
     app_label = 'app'
-    menu_group = 'test_group'
-    template = 'bootstrap.html'
+    menu_group = 'shu_group'
+    icon = "fa fa-circle"
+    template = 'shuschne.html'
 
-xadmin.site.register_page(TestPage6)
+    def get_content(self):
+        return 'OK'
+xadmin.site.register_page(TestPage61)
+
+class TestPage62(PageView):
+    verbose_name = u'数据篡改(Siemens)'
+    app_label = 'app'
+    menu_group = 'shu_group'
+    icon = "fa fa-circle"
+    template = 'shusiem.html'
+
+    def get_content(self):
+        return 'OK'
+xadmin.site.register_page(TestPage62)
 
 
-class TestPage1(PageView):
+class TestPage63(PageView):
+    verbose_name = u'数据篡改(RTU)'
+    app_label = 'app'
+    menu_group = 'shu_group'
+    icon = "fa fa-circle"
+    template = 'shurtu.html'
+
+    def get_content(self):
+        return 'OK'
+xadmin.site.register_page(TestPage63)
+
+
+
+
+class TestPage71(PageView):
     '''
     基本page页
     '''
     verbose_name = u'U盘攻击'
     app_label = 'app'
-    menu_group = 'test_group'
+    menu_group = 'pan_group'
     icon = "fa fa-circle"
-
+    template = 'upan.html'
     def get_content(self):
         return 'OK'
-xadmin.site.register_page(TestPage1)
+xadmin.site.register_page(TestPage71)
 
-class TestPage8(PageView):
+class TestPage72(PageView):
     '''
     基本page页
     '''
     verbose_name = u'GPS攻击'
     app_label = 'app'
-    menu_group = 'test_group'
+    menu_group = 'pan_group'
     icon = "fa fa-circle"
-
+    template = 'gps.html'
     def get_content(self):
         return 'OK'
-xadmin.site.register_page(TestPage8)
+xadmin.site.register_page(TestPage72)
 
-class TestPage7(PageView):
+class TestPage73(PageView):
     '''
     基本page页
     '''
     verbose_name = u'无线攻击'
     app_label = 'app'
-    menu_group = 'test_group'
+    menu_group = 'pan_group'
     icon = "fa fa-circle"
-
+    template = 'wifi.html'
     def get_content(self):
         return 'OK'
-xadmin.site.register_page(TestPage7)
+xadmin.site.register_page(TestPage73)

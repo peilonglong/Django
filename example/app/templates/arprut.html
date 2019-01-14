@@ -11,7 +11,7 @@
                     <button type="button" class="btn btn-success my-wrong" >（启动）Start</button>
                 </div>
                 <div class="col-xs-2">
-                    <button type="button" class="btn btn-danger" >（恢复）Reset</button>
+                    <button type="button" class="btn btn-danger" id="but2">（恢复）Reset</button>
                 </div>
             </div>
         </div>
@@ -50,6 +50,10 @@
                          alert("启动失败")}
                })
            });
+
+           $("#but2").on("click",function () {
+               alert('恢复成功')
+           })
        })
     </script>
     </div>
