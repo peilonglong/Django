@@ -1,0 +1,64 @@
+{% load xadmin_tags %}{% load i18n %}<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+  {% block extrameta %}
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  {% endblock %}
+  {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+  <title>{% block title %}{% endblock %}</title>
+  {% vendor 'bootstrap.css' %}
+
+  {% if ext_ui %}
+  <link rel="stylesheet" type="text/css" href="{% static "adminlte/dist/css/AdminLTE.css" %}" />
+  <link rel="stylesheet" type="text/css" href="{% static "adminlte/dist/css/skins/_all-skins.min.css" %}" />
+  <link rel="stylesheet" type="text/css" href="{% static "xadmin/css/xadmin.adminlte.custom.css" %}" />
+  {% if not head_fix %}
+  <link rel="stylesheet" type="text/css" href="{% static "adminlte/plugins/pace/pace.min.css" %}" />
+  {% endif %}
+  {% endif %}
+
+  {% if site_theme %}
+  <link rel="stylesheet" type="text/css" id="site-theme" href="{{site_theme}}" />
+  {% else %}
+  <link rel="stylesheet" type="text/css" href="{% static "xadmin/css/themes/bootstrap-xadmin.css" %}" />
+  {% endif %}
+  {% vendor 'font-awesome.css' 'xadmin.main.css' 'xadmin.plugins.css' 'xadmin.responsive.css' %}
+
+  {{ media.css }}
+  {% block extrastyle %}{% endblock %}
+  {% vendor 'jquery.js' %}
+  {% url 'xadmin:index' as indexurl %}
+  <script type="text/javascript">
+    window.__admin_media_prefix__ = "{% filter escapejs %}{% static "xadmin/" %}{% endfilter %}";
+    window.__admin_path_prefix__ = "{% filter escapejs %}{{ indexurl }}{% endfilter %}";
+  </script>
+
+{% block headfix %}
+  {% if head_fix %}
+    <script type="text/javascript" src="{% static "xadmin/js/site_config.js" %}"></script>
+  {% endif %} 
+{% endblock %}
+  <script type="text/javascript" src="{% url 'xadmin:jsi18n' %}"></script>
+  {% block extrahead %}{% endblock %}
+  {% view_block 'extrahead' %}
+</head>
+<body class="{% if ext_ui %}{% block ext_class %}skin-black sidebar-mini{% endblock %}{% endif %} {% block bodyclass %}{% endblock %}">
+  {% block body %}{% endblock body %}
+  {% vendor 'jquery-ui-sortable.js' 'bootstrap.js' 'xadmin.main.js' 'xadmin.responsive.js' %}
+
+  {% if ext_ui %}
+  <script src="{% static "adminlte/plugins/pace/pace.js" %}"></script>
+  <script src="{% static "adminlte/dist/js/app.min.js" %}"></script>
+  {% if not head_fix %}
+  <script src="{% static "adminlte/dist/js/setup.js" %}"></script>
+  {% endif %}
+  <script src="{% static "adminlte/plugins/slimScroll/jquery.slimscroll.min.js" %}"></script>
+  {% endif %}
+
+  {{ media.js }}
+  {% block extrabody %}{% endblock %}
+  {% view_block 'extrabody' %}
+</body>
+</html>

@@ -1,0 +1,142 @@
+{% extends 'xadmin/base.html' %}
+{% load i18n xadmin_tags %}
+
+
+{% block title %}{{ title }} | {{ site_title }}{% endblock %}
+
+{% if head_fix %}
+{% block extrastyle %}
+    <style style="text/css">
+        body {
+            background-color: #ecf0f5;
+        }
+    </style>
+{% endblock %}
+{% endif %}
+
+{% block body %}
+<div {% if not head_fix %}class="wrapper"{% endif %}>
+
+    <!-- Header -->
+    {% if not head_fix %}
+      {% include 'xadmin/includes/head_nav_ext.html' %}
+    {% endif %}
+
+
+    <!-- left side menu -->
+    {% block left_menu %}
+    {% if not head_fix %}
+    <aside class="main-sidebar">
+    <section style="height: auto;" class="sidebar">
+        {% block navbar %}
+        {% if nav_menu %}
+          {% include menu_template %}
+        {% else %}
+          <p></p>
+        {% endif %}
+      {% endblock %}
+      {% view_block 'left_navbar' %}
+    </section>
+    </aside>
+    {% endif %}
+    {% endblock %}
+
+    <div id="content-block" class="{% if not head_fix %}content-wrapper{% else %}{% endif %}" >
+
+      <section class="content-header">
+      <h1 class="text-of">
+        {% if title %}{{ title }}{% endif %}
+        {% if subtitle %}<small>{{ subtitle }}</small>{% endif %}
+      </h1>
+      <!-- breadcrumbs -->
+      {% block breadcrumbs %}
+      <ul class="breadcrumb">
+	      {% if breadcrumbs %}
+		      {% for bc in breadcrumbs %}
+		      <li>
+		        {% if forloop.last or not bc.url %}{{bc.title}}
+		        {% else %}<a href="{{bc.url}}">{{bc.title}}</a>{% endif %}
+		      </li>
+		      {% endfor %}
+	      {% else %}
+		      <li><a href="{% url 'xadmin:index' %}">{% trans 'Home' %}</a></li>
+		      {% if title %}{{ title }}{% endif %}
+	      {% endif %}
+      </ul>
+      {% endblock %}
+      </section>
+
+      <section class="content">
+
+      <!-- messages -->
+      {% block messages %}
+      {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-dismissable{% if message.tags %} {% if message.tags == 'error' %}alert-danger{% else %}alert-{{ message.tags }}{% endif %}{% endif %}">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{ message }}
+        </div>
+        {% endfor %}
+      {% endif %}
+      {% endblock messages %}
+
+      <div class="box">
+        <div class="box-header" style="padding-bottom:0px;">
+      <!-- content nav -->
+      {% block content-nav %}
+      <div class="row">
+          <div class="col-sm-4">
+            <div class="box-title">
+            {% view_block 'nav_btns' %}
+            {% block nav_btns %}{% endblock %}
+
+            {% block nav_middle %}{% endblock %}
+            </div>
+          </div>
+
+
+          <div class="col-sm-4">
+              <!-- 过滤器 -->
+              <div>
+                {% view_block 'nav_menu' %}
+              </div>
+          </div>
+
+          <div class="col-sm-4">
+              {% block nav_form %}{% endblock %}
+              <!-- 搜索框 -->
+              {% view_block 'nav_form' %}
+        </div>
+      </div>
+      {% endblock %}
+        </div>
+
+      <div class="box-body">
+      <!-- content -->
+      {% block content %}
+      {{ content }}
+      {% endblock %}
+      </div>
+
+
+      </div>
+
+
+
+
+      </section>
+
+    </div>
+
+  <!-- footer -->
+  {% if not head_fix %}
+  {% block footer %}
+    <footer class="main-footer text-center">
+        &copy; {% block site_footer %}{{ site_footer }}{% endblock %}
+    </footer>
+  {% endblock %}
+  {% endif %}
+
+</div>
+{% endblock body %}
+
