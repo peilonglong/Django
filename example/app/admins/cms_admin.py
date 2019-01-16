@@ -38,3 +38,8 @@ class CategoryAdmin(object):
     style_fields = {'parent':'fk_tree'}
 
 xadmin.site.register(models.Category, CategoryAdmin)
+
+
+class Recordadmin(object):
+    list_display = ('name', 'start', 'create_time')
+xadmin.site.register(models.Record, Recordadmin)

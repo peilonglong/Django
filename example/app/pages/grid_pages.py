@@ -1,6 +1,7 @@
 # coding=utf-8
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.translation import ugettext_lazy as _
+from xadmin.sites import site
 
 import xadmin
 from xadmin.views.page import GridPage
@@ -81,4 +82,4 @@ class GridPage1(GridPage):
         from xadmin.db.query import Collection
         return Collection(data)
 
-xadmin.site.register_page(GridPage1)
+site.register_page(GridPage1)

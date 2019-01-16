@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-xs-10">
                     <a href="#">
-                        <button type="button" class="btn btn-success my-wrong" >（启动）Start
+                        <button type="button" class="btn btn-success" id="but1" >（启动）Start
                         </button>
                     </a>
                 </div>
@@ -32,24 +32,20 @@
         <script src="{% static 'assets/js/jquery-1.10.2.js' %}"></script>
          <script type="text/javascript">
        $(document).ready(function() {
-           $(".my-wrong").on("click",function () {
+           $("#but1").on("click",function () {
 
                alert('启动成功')
-               var array=[{
-                   name:'Arp欺骗(Siemens)'},
-                   {start:1}];
-               $.post( {url:"/xadmin/page/TestPage2",
-
-                       // csrfmiddlewaretoken:"{{ csrf_token }}",
-                        data:JSON.stringify(array)
-                   },
-                   function (data,status) {
-                     if(status=='success') {
-                    window.location.reload();
-                    alert("启动成功")}
-
-                     else {
-                         alert("启动失败")}
+               var formdata = new FormData()
+               formdata.append('name','Arp欺骗(Siemens)')
+               formdata.append('start',1)
+               var request = new XMLHttpRequest()
+               request.open('post',"http://127.0.0.1:8000/arp/", true)
+               request.onload = function () {
+                   if (request.status==200 && request.readyState==4 ) {
+                       alert(request.responseText)
+                   }
+               }
+               request.send(formdata)
                })
            });
 
@@ -57,10 +53,7 @@
                  alert('恢复成功')
            })
 
-
-       })
     </script>
-
     </div>
 
 {% endblock %}

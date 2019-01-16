@@ -1,6 +1,7 @@
 # coding=utf-8
 
 from django import forms
+from xadmin.sites import site
 
 import xadmin
 from xadmin.views.page import FormPage, FormAction
@@ -30,6 +31,6 @@ class FormPage1(FormPage):
     def save_forms(self):
         print(self.form_obj.cleaned_data)
 
-xadmin.site.register_page(FormPage1)
+site.register_page(FormPage1)
 
 

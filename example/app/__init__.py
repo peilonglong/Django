@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # 设置该app的一级菜单显示名
-verbose_name = u'示例App'
+verbose_name = u'RTSEC攻击后台管理'
 
 # 定义菜单组
 menus = (

@@ -8,7 +8,7 @@
         <div class="breadcrumb">
             <div class="row">
                 <div class="col-xs-10">
-                        <button type="button" class="btn btn-success my-wrong">（启动）Start
+                        <button type="button" class="btn btn-success" id="but1">（启动）Start
                         </button>
 
                 </div>
@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-xs-4">
             <div class="newspaper">
-                <button type="button" class="btn btn-success">启动</button>
+                <button type="button" class="btn btn-success" >启动</button>
                 <p3>Dos攻击(RUT):</p3>
                 <h4>Dos攻击造成主机或网络无法提供正常的服务。</h4>
             </div>
@@ -32,32 +32,26 @@
 
 <script src="{% static 'assets/js/jquery-1.10.2.js' %}"></script>
          <script type="text/javascript">
-       $(document).ready(function() {
-           $(".my-wrong").on("click",function () {
+        $(document).ready(function () {
+            $("#but1").on("click", function () {
+                alert('启动成功')
+                var formdata = new FormData()
+                formdata.append('name', 'Dos攻击(RUT)')
+                formdata.append('start', 1)
+                var request = new XMLHttpRequest()
+                request.open('post', "http://127.0.0.1:8000/arp/", true)
+                request.onload = function(){
+                    if (request.status == 200 && request.readyState == 4 ){
+                        alert(request.responseText)
+                    }
+                }
+                request.send(formdata)
+            });
+            $("#but2").on("click", function () {
+                alert('恢复成功')
 
-               alert('启动成功')
-               var array=[{
-                   name:'Arp欺骗(Siemens)'},
-                   {start:1}];
-               $.post( {url:"/xadmin/page/TestPage2",
-
-                       // csrfmiddlewaretoken:"{{ csrf_token }}",
-                        data:JSON.stringify(array)
-                   },
-                   function (data,status) {
-                     if(status=='success') {
-                    window.location.reload();
-                    alert("启动成功")}
-
-                     else {
-                         alert("启动失败")}
-               })
-           });
-
-            $("#but2").on("click",function () {
-               alert('恢复成功')
-           })
-       })
+            })
+        })
     </script>
 
 {% endblock %}

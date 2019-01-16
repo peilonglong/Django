@@ -4,6 +4,8 @@ from django.conf import settings
 
 
 from django.views.generic import TemplateView
+
+from example.app.pages.page_views import TestPage1, postview
 from .views.register import RegisterView, LoginView,ActiveUserView, ForgetView, ResetPasswordView, ModifyPasswordView
 
 urlpatterns = [

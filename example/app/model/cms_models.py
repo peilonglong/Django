@@ -27,3 +27,19 @@ class Article(models.Model):
 
     def __unicode__(self):
         return self.title
+
+
+#记录表
+class Record(models.Model):
+    admin_record =(
+        (0,'恢复'),
+        (1,'启动')
+    )
+    name = models.CharField(max_length=60,verbose_name='攻击名称')
+    start = models.SmallIntegerField(choices=admin_record,default='',verbose_name='攻击的状态')
+    create_time = models.DateField(max_length=50,verbose_name='攻击时间')
+
+    class Meta:
+        db_table = 'record'
+        verbose_name = u'纪录'
+        verbose_name_plural = verbose_name

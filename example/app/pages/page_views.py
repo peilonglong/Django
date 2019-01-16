@@ -1,8 +1,11 @@
 # coding=utf-8
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils.safestring import mark_safe
+from django.views.decorators.csrf import csrf_exempt
 from requests import request
-from . import funtion as post
+from xadmin.sites import site
+from app.model.cms_models import Record
 import xadmin
 from xadmin.views.page import PageView
 
@@ -15,12 +18,12 @@ from xadmin.views.page import PageView
 #     menu_group = 'arp_group'
 #     template = 'arp.html'
     # def get_media(self):
-    #     media = self.vendor('xadmin.plugin.quick-form.js', 'xadmin.form.css')
+    #     media = self.vendor('plugin.quick-form.js', 'form.css')
     #     return media
     #
     # def get_content(self):
     #     return mark_safe('<a data-refresh-url="/xadmin/page/testpage2/" href="/xadmin/page/formpage1" class="ajaxform-handler" title="测试AjaxForm">GO</a>')
-# xadmin.site.register_page(TestPage)
+# site.register_page(TestPage)
 
 class TestPage1(PageView):
     '''
@@ -32,11 +35,18 @@ class TestPage1(PageView):
     icon = "fa fa-circle"
     template = 'arpschne.html'
 
-    def post1(self):
-        print 'jihu'
-        return render(request, 'arpschne.html', locals())
+site.register_page(TestPage1)
 
-xadmin.site.register_page(TestPage1)
+@csrf_exempt
+def postview(request):
+    name = request.POST.get('name')
+    start= request.POST.get('start')
+    print name
+    print start
+    print ("***********")
+    Record.objects.create(name=name,start=start)
+    return JsonResponse({'data': 'ok'} )
+
 
 class TestPage2(PageView):
     verbose_name = u'ARP欺骗(Siemens)'
@@ -45,7 +55,7 @@ class TestPage2(PageView):
     icon = "fa fa-circle"
     template = 'arpsiem.html'
 
-xadmin.site.register_page(TestPage2)
+site.register_page(TestPage2)
 
 class TestPage3(PageView):
     verbose_name = u'ARP欺骗(RTU)'
@@ -54,9 +64,7 @@ class TestPage3(PageView):
     icon = "fa fa-circle"
     template = 'arprut.html'
 
-    def get_content(self):
-        return 'OK'
-xadmin.site.register_page(TestPage3)
+site.register_page(TestPage3)
 
 
 class TestPage41(PageView):
@@ -68,7 +76,7 @@ class TestPage41(PageView):
 
     def get_content(self):
         return 'OK'
-xadmin.site.register_page(TestPage41)
+site.register_page(TestPage41)
 
 class TestPage42(PageView):
     verbose_name = u'DOS攻击(Siemens)'
@@ -79,7 +87,7 @@ class TestPage42(PageView):
 
     def get_content(self):
         return 'OK'
-xadmin.site.register_page(TestPage42)
+site.register_page(TestPage42)
 
 
 class TestPage43(PageView):
@@ -91,7 +99,7 @@ class TestPage43(PageView):
 
     def get_content(self):
         return 'OK'
-xadmin.site.register_page(TestPage43)
+site.register_page(TestPage43)
 
 class TestPage51(PageView):
     verbose_name = u'指令注入(Schneider)'
@@ -102,7 +110,7 @@ class TestPage51(PageView):
 
     def get_content(self):
         return 'OK'
-xadmin.site.register_page(TestPage51)
+site.register_page(TestPage51)
 
 class TestPage52(PageView):
     verbose_name = u'指令注入(Siemens)'
@@ -113,7 +121,7 @@ class TestPage52(PageView):
 
     def get_content(self):
         return 'OK'
-xadmin.site.register_page(TestPage52)
+site.register_page(TestPage52)
 
 class TestPage53(PageView):
     verbose_name = u'指令注入(RTU)'
@@ -124,7 +132,7 @@ class TestPage53(PageView):
 
     def get_content(self):
         return 'OK'
-xadmin.site.register_page(TestPage53)
+site.register_page(TestPage53)
 
 
 
@@ -137,7 +145,7 @@ class TestPage61(PageView):
 
     def get_content(self):
         return 'OK'
-xadmin.site.register_page(TestPage61)
+site.register_page(TestPage61)
 
 class TestPage62(PageView):
     verbose_name = u'数据篡改(Siemens)'
@@ -148,7 +156,7 @@ class TestPage62(PageView):
 
     def get_content(self):
         return 'OK'
-xadmin.site.register_page(TestPage62)
+site.register_page(TestPage62)
 
 
 class TestPage63(PageView):
@@ -160,10 +168,7 @@ class TestPage63(PageView):
 
     def get_content(self):
         return 'OK'
-xadmin.site.register_page(TestPage63)
-
-
-
+site.register_page(TestPage63)
 
 class TestPage71(PageView):
     '''
@@ -176,7 +181,7 @@ class TestPage71(PageView):
     template = 'upan.html'
     def get_content(self):
         return 'OK'
-xadmin.site.register_page(TestPage71)
+site.register_page(TestPage71)
 
 class TestPage72(PageView):
     '''
@@ -189,7 +194,7 @@ class TestPage72(PageView):
     template = 'gps.html'
     def get_content(self):
         return 'OK'
-xadmin.site.register_page(TestPage72)
+site.register_page(TestPage72)
 
 class TestPage73(PageView):
     '''
@@ -202,4 +207,4 @@ class TestPage73(PageView):
     template = 'wifi.html'
     def get_content(self):
         return 'OK'
-xadmin.site.register_page(TestPage73)
+site.register_page(TestPage73)

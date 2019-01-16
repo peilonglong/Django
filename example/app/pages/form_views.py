@@ -1,6 +1,6 @@
 # coding=utf-8
 
-import xadmin
+from xadmin.sites import site
 from xadmin.views.form import FormView
 
 from .forms import TestForm
@@ -48,4 +48,4 @@ class TestFormView(FormView):
         # 初始化数据
         return {'title':'jone test'}
 
-xadmin.site.register_view(r'^test_form$', TestFormView, name='TestFormView')
+site.register_view(r'^test_form$', TestFormView, name='TestFormView')

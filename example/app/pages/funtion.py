@@ -6,3 +6,4 @@ def post1(self, request):
     print name
     return name
     # return render(request, 'arpschne.html', locals())
+

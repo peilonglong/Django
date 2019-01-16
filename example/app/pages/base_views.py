@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from xadmin import site
+from xadmin.sites import site
 from xadmin.views.base import BaseView
 
 
@@ -11,5 +11,6 @@ class TestHTTPView(BaseView):
 
     def get(self, request, *args, **kwargs):
         return self.render_text('OK')
+
 site.register_view(r'^test_view$', TestHTTPView, name='TestHTTPView')
 

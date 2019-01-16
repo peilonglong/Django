@@ -1,6 +1,7 @@
 # coding=utf-8
 
 from django import forms
+from xadmin.sites import site
 
 import xadmin
 from xadmin.views.page import FormAction
@@ -24,4 +25,4 @@ class FormAction1(FormAction):
     def save_forms(self):
         for e in self.get_id_list():
             print('doing...',e)
-xadmin.site.register_page(FormAction1)
+site.register_page(FormAction1)

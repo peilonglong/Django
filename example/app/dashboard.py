@@ -15,12 +15,12 @@ class MainDashboard(object):
 
     widgets = [
         [
-            {"type": "html", "title": "Test Widget", "content": "<h3> Welcome to DjangoX! </h3><p>Join us: <br/>Github : https://github.com/JoneXiong/DjangoX</p>"},
+            {"type": "html", "title": "Test Widget", "content": "<h3> Welcome to DjangoX! </h3>"},
             {"type": "chart", "model": "app.accessrecord", 'chart': 'user_count', 'params': {'_p_date__gte': '2013-01-08', 'p': 1, '_p_date__lt': '2013-01-29'}},
             {"type": "list", "model": "app.host", 'params': {'o':'-guarantee_date'}},
         ],
         [
-            {"type": "qbutton", "title": "Quick Start", "btns": [{'model': models.Host}, {'model': models.IDC}, {'title': "DjangoX", 'url': "https://github.com/JoneXiong/DjangoX"}]},
+            {"type": "qbutton", "title": "Quick Start", "btns": [{'model': models.Host}, {'model': models.IDC}]},
             {"type": "addform", "model": models.MaintainLog},
         ]
     ]
