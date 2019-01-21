@@ -9,29 +9,12 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile')
     mobile = models.CharField('手机号', max_length=64, blank=True, null=True)
     #image = models.ImageField(upload_to="image/%Y/%m", default="image/default.png")
-    # record = models.ForeignKey('Record', on_delete=models.CASCADE)
     class Meta:
         app_label ='auth'
         db_table = 'auth_userprofile'
         verbose_name = u'用户信息'
         verbose_name_plural = verbose_name
 
-#
-# #记录表
-# class Record(models.Model):
-#     admin_record =(
-#         (0,'恢复'),
-#         (1,'启动')
-#     )
-#     name = models.CharField(max_length=60,verbose_name='攻击名称')
-#     start = models.SmallIntegerField(choices=admin_record,default='',verbose_name='攻击的状态')
-#     create_time = models.DateField(max_length=50,verbose_name='攻击时间')
-#
-#     class Meta:
-#         app_label ='auth'
-#         db_table = 'record'
-#         verbose_name = u'纪录'
-#         verbose_name_plural = verbose_name
 
 
 class EmailVerifyRecord(models.Model):

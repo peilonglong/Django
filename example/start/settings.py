@@ -37,7 +37,7 @@ else:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'myjango',
+        'NAME': 'myjango1',
         'USER': 'root',
         'PASSWORD': '123456',
         'HOST': 'localhost',
@@ -178,6 +178,7 @@ INSTALLED_APPS = (
     'crispy_forms',
     'xapps.common',
     'app',
+    # 'account',#this is an app？
 )
 
 DATE_FORMAT = 'Y-m-d'
@@ -222,6 +223,7 @@ LOGGING = {
 }
 
 SESSION_SAVE_EVERY_REQUEST = False
+
 
 REMOTE_MEDIA_URL = 'http://xxx.qiniudn.com'
 

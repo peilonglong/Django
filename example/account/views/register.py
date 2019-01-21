@@ -30,8 +30,8 @@ def generate_random_string(random_length=8):
 
 def send_register_email(email, send_type="register"):
 
-    EMAIL_FROM = 'jianhongxiong@kingthy.com'
-    HOST = '192.168.1.153:8080'
+    EMAIL_FROM = '577449440@qq.com'
+    HOST = '192.168.99.103:587'
 
     email_record = EmailVerifyRecord()
     code = generate_random_string(random_length=16)
@@ -102,6 +102,7 @@ class RegisterView(View):
                 }
                 return render(request, auth_tpl_path+'register.html', data)
             password = request.POST.get('password', "")
+            # user = UserProfile.objects.create_user(username=username,password=password,email=username)
             user_profile = UserProfile()
             user_profile.username = username
             user_profile.email = username
@@ -117,6 +118,10 @@ class RegisterView(View):
             }
             return render(request, auth_tpl_path+'register.html', data)
 
+    # def save(self, force_insert=False, force_update=False, using=None,
+    #             update_fields=None):
+    #     self.password = make_password(self.password)
+    #     super().save()
 class LoginForm(forms.Form):
     username = forms.CharField(required=True, min_length=4)
     password = forms.CharField(required=True, min_length=4)

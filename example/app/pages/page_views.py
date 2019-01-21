@@ -5,10 +5,11 @@ from django.utils.safestring import mark_safe
 from django.views.decorators.csrf import csrf_exempt
 from requests import request
 from xadmin.sites import site
-from app.model.cms_models import Record
+from app.model.cms_models import Records
 import xadmin
+from xadmin.util import User
 from xadmin.views.page import PageView
-
+from account.models.user_profile import UserProfile
 # class TestPage(PageView):
 #     '''
 #     带ajax页链接
@@ -41,11 +42,19 @@ site.register_page(TestPage1)
 def postview(request):
     name = request.POST.get('name')
     start= request.POST.get('start')
-    print name
-    print start
-    print ("***********")
-    Record.objects.create(name=name,start=start)
-    return JsonResponse({'data': 'ok'} )
+    users=User.objects.all()
+    for user in users:
+        print user
+        if user.is_superuser==1:
+            print '$$$$$$$'
+            print user.is_superuser
+            print user.username
+            print start
+            print ("***********")
+            Records.objects.create(name=name,start=start)
+            return JsonResponse({'data': 'ok'} )
+    # else:
+    #     return render(request,'arpschne.html')
 
 
 class TestPage2(PageView):

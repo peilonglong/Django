@@ -11,7 +11,6 @@ from xadmin.filters import ChoicesBaseFilter
 
 from .form_actions import FormAction1
 
-
 class GridListFilter1(ChoicesBaseFilter):
 
     title = '筛选'

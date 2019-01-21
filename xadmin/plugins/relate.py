@@ -158,7 +158,7 @@ class RelateMenuPlugin(BasePlugin):
         self.has_change_perm = self.admin_view.has_permission('change')
         self.has_delete_perm = self.admin_view.has_permission('delete')
         if self.use_op_menu:
-            if self.has_view_perm or self.has_add_perm or self.has_change_perm:
+            if self.has_view_perm or self.admin_site or self.has_change_perm:
                 list_display.append('op_link')
                 self.admin_view.op_link = self.op_link
         if not self.admin_view.pop and self.use_related_menu and len(self.get_related_list()):

@@ -42,4 +42,4 @@ xadmin.site.register(models.Category, CategoryAdmin)
 
 class Recordadmin(object):
     list_display = ('name', 'start', 'create_time')
-xadmin.site.register(models.Record, Recordadmin)
+xadmin.site.register(models.Records, Recordadmin)

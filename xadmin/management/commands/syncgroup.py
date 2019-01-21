@@ -9,7 +9,6 @@ from django.contrib.auth.models import ContentType, Permission, Group
 
 from xadmin.dutils import import_module
 
-
 def gen_model_perm_code(model_name, model_perm):
     re_model_perm = []
     index_dict = {

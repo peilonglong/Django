@@ -30,7 +30,7 @@ class Article(models.Model):
 
 
 #记录表
-class Record(models.Model):
+class Records(models.Model):
     admin_record =(
         (0,'恢复'),
         (1,'启动')
@@ -40,6 +40,13 @@ class Record(models.Model):
     create_time = models.DateField(max_length=50,verbose_name='攻击时间')
 
     class Meta:
-        db_table = 'record'
+        app_label = "app"
+        db_table = 'records'
         verbose_name = u'纪录'
         verbose_name_plural = verbose_name
+        permissions = (
+            ("scan_records", u"查看记录"),
+        )
+
+
+

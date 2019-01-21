@@ -232,7 +232,6 @@ class ChangePasswordView(ModelAdminView):
             raise PermissionDenied
         self.obj = self.get_object(unquote(object_id))
         self.form = self.change_password_form(self.obj)
-
         return self.get_response()
 
     def get_media(self):
@@ -267,9 +266,9 @@ class ChangePasswordView(ModelAdminView):
     def post(self, request, object_id):
         if not self.has_change_permission(request):
             raise PermissionDenied
+        print PermissionDenied
         self.obj = self.get_object(unquote(object_id))
         self.form = self.change_password_form(self.obj, request.POST)
-
         if self.form.is_valid():
             self.form.save()
             self.message_user(_('Password changed successfully.'), 'success')
@@ -283,12 +282,10 @@ class ChangeAccountPasswordView(ChangePasswordView):
     用户修改自己密码
     '''
     change_password_form = PasswordChangeForm
-
     @csrf_protect_m
     def get(self, request):
         self.obj = self.user
         self.form = self.change_password_form(self.obj)
-
         return self.get_response()
 
     def get_context(self):

@@ -76,8 +76,10 @@ class ModelPage(SiteView):
         对象链接
         '''
         if self.has_change_permission(obj):
+            print 'how are you!'
             return self.model_admin_url("change", getattr(obj, self.opts.pk.attname))
         elif self.has_view_permission(obj):
+            print 'you are very good!'
             return self.model_admin_url("detail", getattr(obj, self.opts.pk.attname))
         else:
             return None
@@ -133,6 +135,9 @@ class ModelPage(SiteView):
         return ('view' not in self.remove_permissions) and (self.user.has_perm('%s.view_%s' % self.model_info) or self.user.has_perm('%s.change_%s' % self.model_info))
 
     def has_add_permission(self):
+        print 'has_add_permission'
+        print 'admin ni ke hao?'
+        print 'we are good luckly!'
         return ('add' not in self.remove_permissions) and self.user.has_perm('%s.add_%s' % self.model_info)
 
     def has_change_permission(self, obj=None):
